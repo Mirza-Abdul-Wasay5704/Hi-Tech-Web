@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Message Sent Successfully - Hi-Tech Engineering Services{% endblock title %}
+
+{% block content %}
+<!-- Success Hero -->
+<section class="hero text-center">
+    <div class="container">
+        <h1 class="animate-fade-in">Thank You!</h1>
+        <p class="lead">Your message has been sent successfully</p>
+    </div>
+</section>
+
+<!-- Success Message -->
+<section class="py-5">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <i class="bi bi-check-circle display-1 text-success mb-4"></i>
+                <h2 class="mb-4">Message Received</h2>
+                <p class="lead mb-4">We'll get back to you as soon as possible.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{% url 'core:home' %}" class="btn btn-primary btn-lg">Back to Home</a>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline-primary btn-lg">View Our Services</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

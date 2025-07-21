@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Projects - Hi-Tech Engineering Services{% endblock title %}
+
+{% block content %}
+<!-- Projects Hero -->
+<section class="hero text-center">
+    <div class="container">
+        <h1 class="animate-fade-in">Our Projects</h1>
+        <p class="lead">Explore our successful elevator installations and modernizations</p>
+    </div>
+</section>
+
+<!-- Projects Grid -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card project-card h-100">
+                    {% if project.images.first %}
+                    <img src="{{ project.images.first.image.url }}" alt="{{ project.title }}" class="card-img-top" width="400" height="300">
+                    {% endif %}
+                    <div class="card-body">
+                        <h3 class="card-title h5">{{ project.title }}</h3>
+                        <p class="card-text">{{ project.description|truncatewords:30 }}</p>
+                        <div class="mb-3">
+                            <small class="text-muted">
+                                <i class="bi bi-geo-alt"></i> {{ project.location }}<br>
+                                <i class="bi bi-calendar"></i> Completed: {{ project.completion_date|date:"F Y" }}
+                            </small>
+                        </div>
+                        <a href="{% url 'projects:project_detail' project.pk %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Project CTA -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="mb-4">Have a Similar Project?</h2>
+        <p class="lead mb-4">Let's discuss how we can help you modernize your elevator systems</p>
+        <a href="{% url 'contact:quote' %}" class="btn btn-primary btn-lg">Request a Quote</a>
+    </div>
+</section>
+{% endblock content %}

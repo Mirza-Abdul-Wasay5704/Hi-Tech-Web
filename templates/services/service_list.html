@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Services - Hi-Tech Engineering Services{% endblock title %}
+
+{% block content %}
+<!-- Services Hero -->
+<section class="hero text-center">
+    <div class="container">
+        <h1 class="animate-fade-in">Our Services</h1>
+        <p class="lead">Comprehensive elevator solutions for all your needs</p>
+    </div>
+</section>
+
+<!-- Services List -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card service-card h-100">
+                    {% if service.image %}
+                    <img src="{{ service.image.url }}" alt="{{ service.name }}" class="card-img-top" width="400" height="300">
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <i class="bi {{ service.icon }} service-icon"></i>
+                        <h3 class="card-title h5">{{ service.name }}</h3>
+                        <p class="card-text">{{ service.description|truncatewords:30 }}</p>
+                        <a href="{% url 'services:service_detail' service.pk %}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Service CTA -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="mb-4">Need a Custom Solution?</h2>
+        <p class="lead mb-4">Contact us to discuss your specific requirements</p>
+        <a href="{% url 'contact:quote' %}" class="btn btn-primary btn-lg">Request a Quote</a>
+    </div>
+</section>
+{% endblock content %}

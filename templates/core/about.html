@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - Hi-Tech Engineering Services{% endblock title %}
+
+{% block content %}
+<!-- About Hero -->
+<section class="hero text-center">
+    <div class="container">
+        <h1 class="animate-fade-in">About Hi-Tech Engineering Services</h1>
+        <p class="lead">A legacy of excellence in elevator solutions since 1999</p>
+    </div>
+</section>
+
+<!-- Company History -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="mb-4">Our History</h2>
+                <p>Founded over 26 years ago, Hi-Tech Engineering Services has grown into a trusted leader in elevator solutions. Our journey began with a vision to provide top-quality elevator maintenance and modernization services in Karachi, Pakistan.</p>
+                <p>Through dedication, expertise, and commitment to excellence, we've built a reputation for reliable service and cutting-edge solutions in the elevator industry.</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ STATIC_URL }}img/about-history.jpg" alt="Hi-Tech Engineering History" class="img-fluid rounded shadow" width="600" height="400">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Expertise -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Expertise</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-gear-fill display-4 text-primary mb-3"></i>
+                        <h4>Maintenance</h4>
+                        <p>Regular preventive maintenance to ensure optimal performance and safety of your elevators.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-tools display-4 text-primary mb-3"></i>
+                        <h4>Overhauling</h4>
+                        <p>Complete mechanical and electrical overhauling services to extend elevator lifespan.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-arrow-up-circle-fill display-4 text-primary mb-3"></i>
+                        <h4>Modernization</h4>
+                        <p>Upgrade outdated systems with modern technology for improved efficiency and safety.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Certifications</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h4 class="mb-4">Sigma Elevator Certified</h4>
+                <p class="lead">Our technicians are certified by Sigma Elevator and have received specialized training in Korea, ensuring the highest standards of service and expertise.</p>
+                <div class="mt-4">
+                    <img src="{{ STATIC_URL }}img/certification.jpg" alt="Sigma Elevator Certification" class="img-fluid rounded shadow" width="400" height="300">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Team</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <p class="lead mb-5">Our skilled technicians are the backbone of our company, bringing years of experience and dedication to every project.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-person-circle display-1 text-primary mb-3"></i>
+                        <h5 class="card-title">Certified Technicians</h5>
+                        <p class="card-text">Our technicians undergo regular training to stay updated with the latest technologies and safety standards.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-headset display-1 text-primary mb-3"></i>
+                        <h5 class="card-title">Support Team</h5>
+                        <p class="card-text">24/7 customer support team ready to assist you with any elevator-related concerns.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-people display-1 text-primary mb-3"></i>
+                        <h5 class="card-title">Management</h5>
+                        <p class="card-text">Experienced leadership team ensuring quality service delivery and customer satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="mb-4">Experience the Hi-Tech Difference</h2>
+        <p class="lead mb-4">Join our growing list of satisfied clients and experience superior elevator services.</p>
+        <a href="{% url 'contact:contact' %}" class="btn btn-light btn-lg">Contact Us Today</a>
+    </div>
+</section>
+{% endblock content %}

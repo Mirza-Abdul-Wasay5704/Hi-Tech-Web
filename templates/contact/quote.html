@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Request a Quote - Hi-Tech Engineering Services{% endblock title %}
+
+{% block content %}
+<!-- Quote Hero -->
+<section class="hero text-center">
+    <div class="container">
+        <h1 class="animate-fade-in">Request a Quote</h1>
+        <p class="lead">Get a customized quote for your elevator service needs</p>
+    </div>
+</section>
+
+<!-- Quote Form Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-4">Request a Quote</h2>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="text-end mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Why Choose Hi-Tech Engineering Services?</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <i class="bi bi-clock-history display-4 text-primary mb-3"></i>
+                    <h4>26+ Years Experience</h4>
+                    <p>Trusted expertise in elevator services</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <i class="bi bi-shield-check display-4 text-primary mb-3"></i>
+                    <h4>Certified Technicians</h4>
+                    <p>Highly trained and certified experts</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <i class="bi bi-trophy display-4 text-primary mb-3"></i>
+                    <h4>Quality Service</h4>
+                    <p>Commitment to excellence</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

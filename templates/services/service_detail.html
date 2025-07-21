@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ service.name }} - Hi-Tech Engineering Services{% endblock title %}
+
+{% block content %}
+<!-- Service Hero -->
+<section class="hero text-center">
+    <div class="container">
+        <h1 class="animate-fade-in">{{ service.name }}</h1>
+    </div>
+</section>
+
+<!-- Service Details -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            {% if service.image %}
+            <div class="col-lg-6 mb-4">
+                <img src="{{ service.image.url }}" alt="{{ service.name }}" class="img-fluid rounded shadow" width="600" height="400">
+            </div>
+            {% endif %}
+            <div class="col-lg-{% if service.image %}6{% else %}12{% endif %}">
+                <div class="service-content">
+                    <i class="bi {{ service.icon }} display-4 text-primary mb-3"></i>
+                    <p class="lead mb-4">{{ service.description }}</p>
+                    
+                    <!-- Service Benefits -->
+                    <h3 class="h4 mb-3">Benefits</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Enhanced safety and reliability
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Improved performance and efficiency
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Extended equipment lifespan
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Reduced maintenance costs
+                        </li>
+                    </ul>
+
+                    <!-- CTA Button -->
+                    <div class="mt-4">
+                        <a href="{% url 'contact:quote' %}?service={{ service.name|urlencode }}" class="btn btn-primary btn-lg">Request a Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Services -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Other Services</h2>
+        <div class="row g-4">
+            {% for related_service in related_services %}
+            <div class="col-md-4">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi {{ related_service.icon }} service-icon"></i>
+                        <h3 class="card-title h5">{{ related_service.name }}</h3>
+                        <p class="card-text">{{ related_service.description|truncatewords:20 }}</p>
+                        <a href="{% url 'services:service_detail' related_service.pk %}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to Get Started?</h2>
+        <p class="lead mb-4">Contact us today to discuss your elevator service needs</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{% url 'contact:quote' %}" class="btn btn-light btn-lg">Request a Quote</a>
+            <a href="{% url 'contact:contact' %}" class="btn btn-outline-light btn-lg">Contact Us</a>
+        </div>
+    </div>
+</section>
+{% endblock content %}

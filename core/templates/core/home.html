@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Hi-Tech Engineering Services{% endblock title %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 data-aos="fade-up">Elevating Excellence in Engineering</h1>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">{{ company_info.description }}</p>
+                <div class="d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="400">
+                    <a href="{% url 'contact:quote' %}" class="btn btn-primary btn-lg">
+                        <i class="bi bi-calculator me-2"></i>Get a Quote
+                    </a>
+                    <a href="{% url 'contact:contact' %}" class="btn btn-outline-light btn-lg">
+                        <i class="bi bi-headset me-2"></i>Contact Us
+                    </a>
+                </div>
+                <div class="mt-5 pt-5" data-aos="fade-up" data-aos-delay="600">
+                    <div class="row g-4 stats-section text-light">
+                        <div class="col-md-4">
+                            <div class="stat-item">
+                                <i class="bi bi-building display-4 mb-3"></i>
+                                <h2 class="stat-number" data-target="2000">0</h2>
+                                <p>Projects Completed</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-item">
+                                <i class="bi bi-people display-4 mb-3"></i>
+                                <h2 class="stat-number" data-target="26">0</h2>
+                                <p>Years of Experience</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-item">
+                                <i class="bi bi-star display-4 mb-3"></i>
+                                <h2 class="stat-number" data-target="98">0</h2>
+                                <p>Client Satisfaction %</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-overlay"></div>
+</section>
+
+<!-- Services Overview -->
+<section class="py-5 bg-light services-section">
+    <div class="container">
+        <h2 class="text-center mb-2" data-aos="fade-up">Our Expert Services</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="200">
+            Comprehensive elevator solutions for your building's vertical transportation needs
+        </p>
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ forloop.counter|multiply:100 }}">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center">
+                        <div class="service-icon-wrapper">
+                            <i class="bi {{ service.icon }} service-icon"></i>
+                        </div>
+                        <h5 class="card-title mt-4">{{ service.name }}</h5>
+                        <p class="card-text text-muted">{{ service.description|truncatewords:20 }}</p>
+                        <a href="{% url 'services:service_detail' service.pk %}" class="btn btn-outline-primary">
+                            <span>Learn More</span>
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Why Choose Hi-Tech Engineering Services?</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <i class="bi bi-clock-history display-4 text-primary mb-3"></i>
+                    <h4>26+ Years Experience</h4>
+                    <p>More than two decades of excellence in elevator services</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <i class="bi bi-award display-4 text-primary mb-3"></i>
+                    <h4>Certified Experts</h4>
+                    <p>Sigma Elevator certified technicians trained in Korea</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <i class="bi bi-lightning-charge display-4 text-primary mb-3"></i>
+                    <h4>Rapid Response</h4>
+                    <p>Quick and efficient service when you need it most</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Featured Projects</h2>
+        <div class="row">
+            {% for project in featured_projects %}
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    {% if project.images.first %}
+                    <img src="{{ project.images.first.image.url }}" alt="{{ project.title }}" class="img-fluid mb-3" width="400" height="300">
+                    {% endif %}
+                    <h5>{{ project.title }}</h5>
+                    <p>{{ project.description|truncatewords:20 }}</p>
+                    <a href="{% url 'projects:project_detail' project.pk %}" class="btn btn-outline-primary btn-sm">View Details</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'projects:project_list' %}" class="btn btn-primary">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="py-5 bg-accent position-relative overflow-hidden">
+    <div class="container text-center cta-container">
+        <h2 class="display-4 fw-bold mb-4" data-aos="fade-up">Ready to Upgrade Your Elevator Systems?</h2>
+        <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Contact us today for a consultation and free quote</p>
+        <div class="d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="200">
+            <a href="{% url 'contact:quote' %}" class="btn btn-lg cta-btn-primary">
+                <i class="bi bi-calculator me-2"></i>Request a Quote
+            </a>
+            <a href="tel:{{ company_info.phone_1 }}" class="btn btn-outline-light btn-lg">
+                <i class="bi bi-telephone me-2"></i>Call Us Now
+            </a>
+        </div>
+    </div>
+    <div class="cta-pattern-overlay"></div>
+</section>
+{% endblock content %}
